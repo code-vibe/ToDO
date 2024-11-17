@@ -1,0 +1,59 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of the 'go run' command
+tmp/
+
+# Dependency directories (vendor/ is used in Go modules)
+/vendor/
+
+# Go workspaces
+*.work
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Go build files
+*.out
+*.a
+
+# Coverage output
+coverage.out
+
+# Local env files
+.env
+.env.*
+
+# Go cache and object files
+/.cache/
+*.o
+*.obj
+
+# Node_modules for Go projects using frontend frameworks
+node_modules/
