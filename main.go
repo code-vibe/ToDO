@@ -1,6 +1,7 @@
 package main
 
 import (
+	"My-first-api/internal/db"
 	"My-first-api/internal/todo"
 	"My-first-api/internal/transport"
 	"log"
@@ -22,7 +23,11 @@ func main() {
 		fmt.Println("i =", 100/i)
 	}*/
 	//var todos = make([]string, 0)
-	svc := todo.NewService()
+	d, err := db.New("postgres", "password", "postgres", "localhost", 5432)
+	if err != nil {
+		log.Fatal(err)
+	}
+	svc := todo.NewService(d)
 	server := transport.NewServer(svc)
 
 	if err := server.Serve(); err != nil {
