@@ -1,9 +1,9 @@
 package main
 
 import (
-	"My-first-api/internal/db"
-	"My-first-api/internal/todo"
-	"My-first-api/internal/transport"
+	"github.com/code-vibe/ToDO/internal/db"
+	"github.com/code-vibe/ToDO/internal/todo"
+	"github.com/code-vibe/ToDO/internal/transport"
 	"log"
 )
 

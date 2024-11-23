@@ -1,9 +1,9 @@
 package todo_test
 
 import (
-	"My-first-api/internal/db"
-	"My-first-api/internal/todo"
 	"context"
+	"github.com/code-vibe/ToDO/internal/db"
+	"github.com/code-vibe/ToDO/internal/todo"
 	"reflect"
 	"testing"
 )
@@ -12,14 +12,14 @@ type MockDB struct {
 	items []db.Item
 }
 
-func (m MockDB) InsertItem(ctx context.Context, item db.Item) error {
+func (m MockDB) InsertItem(_ context.Context, item db.Item) error {
 	//TODO implement me
 	m.items = append(m.items, item)
 	return nil
 
 }
 
-func (m MockDB) GetAllItems(ctx context.Context) ([]db.Item, error) {
+func (m MockDB) GetAllItems(_ context.Context) ([]db.Item, error) {
 	//TODO implement me
 	return m.items, nil
 
