@@ -1,10 +1,29 @@
 package todo_test
 
 import (
+	"My-first-api/internal/db"
 	"My-first-api/internal/todo"
+	"context"
 	"reflect"
 	"testing"
 )
+
+type MockDB struct {
+	items []db.Item
+}
+
+func (m MockDB) InsertItem(ctx context.Context, item db.Item) error {
+	//TODO implement me
+	m.items = append(m.items, item)
+	return nil
+
+}
+
+func (m MockDB) GetAllItems(ctx context.Context) ([]db.Item, error) {
+	//TODO implement me
+	return m.items, nil
+
+}
 
 func TestService_Search(t *testing.T) {
 
@@ -30,14 +49,19 @@ func TestService_Search(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			svc := todo.NewService()
+			m := &MockDB{}
+			svc := todo.NewService(m)
 			for _, toAdd := range tt.toDosToAdd {
 				err := svc.Add(toAdd)
 				if err != nil {
 					t.Error(err)
 				}
 			}
-			if got := svc.Search(tt.query); !reflect.DeepEqual(got, tt.expectedResult) {
+			got, err := svc.Search(tt.query)
+			if err != nil {
+				t.Error(err)
+			}
+			if !reflect.DeepEqual(got, tt.expectedResult) {
 				t.Errorf("Search() = %v, want %v", got, tt.expectedResult)
 			}
 		})
